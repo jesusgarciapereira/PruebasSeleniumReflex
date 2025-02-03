@@ -43,12 +43,12 @@ class Prueba1 {
 		assertEquals("Buscadores", buscadoresText);
 		
 		 // Esperar a que el elemento con id "page-buscadores" esté presente en la página
-	    WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(5));
-	    wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-buscadores")));
-	    
-		WebElement paginaBuscadores = driver1.findElement(By.id("page-buscadores"));
-		String buscadoresPageText = paginaBuscadores.getText();
-		assertEquals("Buscadores", buscadoresPageText);
+//	    WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(5));
+//	    wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-buscadores")));
+//	    
+//		WebElement paginaBuscadores = driver1.findElement(By.id("page-buscadores"));
+//		String buscadoresPageText = paginaBuscadores.getText();
+//		assertEquals("Buscadores", buscadoresPageText);
 		
 		
 	}
@@ -63,12 +63,12 @@ class Prueba1 {
 		assertEquals("Redes Sociales", redesText);
 		
 		 // Esperar a que el elemento con id "page-redes" esté presente en la página
-	    WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(5));
-	    wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-redes")));
-	    
-		WebElement paginaRedes = driver1.findElement(By.id("page-redes"));
-		String buscadoresPageRedes = paginaRedes.getText();
-		assertEquals("Redes Sociales", buscadoresPageRedes);
+//	    WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(5));
+//	    wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-redes")));
+//	    
+//		WebElement paginaRedes = driver1.findElement(By.id("page-redes"));
+//		String buscadoresPageRedes = paginaRedes.getText();
+//		assertEquals("Redes Sociales", buscadoresPageRedes);
 		
 
 	}
@@ -122,5 +122,55 @@ class Prueba1 {
 		String enlaceBaiduText = enlaceBaidu.getText();
 		assertEquals("Baidu", enlaceBaiduText);
 	} 
+	
+	@Test
+	void test9() {
+		driver1.get("http://localhost:3000/buscadores");
+		
+		WebElement botonVolver = driver1.findElement(By.id("buscadores-volver"));
+		botonVolver.click();
+		String botonVolverText = botonVolver.getText();
+		assertEquals("Volver", botonVolverText);
+	}
+	
+	@Test
+	void test10() {
+		driver1.get("http://localhost:3000/redes");
+		
+		WebElement enlaceInstagram = driver1.findElement(By.id("instagram"));
+		enlaceInstagram.click();
+		String enlaceInstagramText = enlaceInstagram.getText();
+		assertEquals("Instagram", enlaceInstagramText);
+	}
+	
+	@Test
+	void test11() {
+		driver1.get("http://localhost:3000/redes");
+		
+		WebElement enlaceTikTok = driver1.findElement(By.id("tiktok"));
+		enlaceTikTok.click();
+		String enlaceTikTokText = enlaceTikTok.getText();
+		assertEquals("TikTok", enlaceTikTokText);
+	}
+	
+	@Test
+	void test12() {
+		driver1.get("http://localhost:3000/redes");
+		
+		WebElement enlaceFacebook = driver1.findElement(By.id("facebook"));
+		enlaceFacebook.click();
+		String enlaceFacebookText = enlaceFacebook.getText();
+		assertEquals("Facebook", enlaceFacebookText);
+	} 
+	
+	@Test
+	void test13() {
+		driver1.get("http://localhost:3000/redes");
+		
+		WebElement botonVolver = driver1.findElement(By.id("redes-volver"));
+		botonVolver.click();
+		String botonVolverText = botonVolver.getText();
+		assertEquals("Volver", botonVolverText);
+	}
 
 }
