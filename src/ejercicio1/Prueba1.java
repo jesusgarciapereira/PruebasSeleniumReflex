@@ -72,5 +72,55 @@ class Prueba1 {
 		
 
 	}
+	
+	@Test
+	void test4() {
+		driver1.get("http://localhost:3000/buscadores");
+	    
+		WebElement paginaBuscadores = driver1.findElement(By.id("page-buscadores"));
+		String buscadoresPageText = paginaBuscadores.getText();
+		assertEquals("Buscadores", buscadoresPageText);
+	}
+	
+	@Test
+	void test5() {
+		driver1.get("http://localhost:3000/redes");
+			    
+		WebElement paginaRedes = driver1.findElement(By.id("page-redes"));
+		String buscadoresPageRedes = paginaRedes.getText();
+		assertEquals("Redes Sociales", buscadoresPageRedes);
+		
+
+	}
+	
+	@Test
+	void test6() {
+		driver1.get("http://localhost:3000/buscadores");
+		
+		WebElement enlaceGoogle = driver1.findElement(By.id("google"));
+		enlaceGoogle.click();
+		String enlaceGoogleText = enlaceGoogle.getText();
+		assertEquals("Google", enlaceGoogleText);
+	}
+	
+	@Test
+	void test7() {
+		driver1.get("http://localhost:3000/buscadores");
+		
+		WebElement enlaceBing = driver1.findElement(By.id("bing"));
+		enlaceBing.click();
+		String enlaceBingText = enlaceBing.getText();
+		assertEquals("Bing", enlaceBingText);
+	}
+	
+	@Test
+	void test8() {
+		driver1.get("http://localhost:3000/buscadores");
+		
+		WebElement enlaceBaidu = driver1.findElement(By.id("baidu"));
+		enlaceBaidu.click();
+		String enlaceBaiduText = enlaceBaidu.getText();
+		assertEquals("Baidu", enlaceBaiduText);
+	} 
 
 }
