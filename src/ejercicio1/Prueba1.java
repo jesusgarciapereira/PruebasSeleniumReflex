@@ -81,7 +81,7 @@ class Prueba1 {
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-buscadores")));
 
 		WebElement enlaceGoogle = driver1.findElement(By.id("google"));
-		// enlaceGoogle.click();
+		enlaceGoogle.click();
 		String enlaceGoogleText = enlaceGoogle.getText();
 		assertEquals("Google", enlaceGoogleText);
 	}
@@ -98,7 +98,7 @@ class Prueba1 {
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-buscadores")));
 
 		WebElement enlaceBing = driver1.findElement(By.id("bing"));
-		// enlaceBing.click();
+		enlaceBing.click();
 		String enlaceBingText = enlaceBing.getText();
 		assertEquals("Bing", enlaceBingText);
 	}
@@ -115,7 +115,7 @@ class Prueba1 {
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-buscadores")));
 
 		WebElement enlaceBaidu = driver1.findElement(By.id("baidu"));
-		// enlaceBaidu.click();
+		enlaceBaidu.click();
 		String enlaceBaiduText = enlaceBaidu.getText();
 		assertEquals("Baidu", enlaceBaiduText);
 	}
@@ -132,7 +132,6 @@ class Prueba1 {
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-buscadores")));
 
 		WebElement botonVolver = driver1.findElement(By.id("buscadores-volver"));
-		// botonVolver.click();
 		String botonVolverText = botonVolver.getText();
 		assertEquals("Volver", botonVolverText);
 	}
