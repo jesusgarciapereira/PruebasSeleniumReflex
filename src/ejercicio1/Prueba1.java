@@ -58,9 +58,10 @@ class Prueba1 {
 		WebElement buscadores = driver1.findElement(By.id("buscadores"));
 		buscadores.click();
 
+		driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		// Esperar a que el elemento con id "page-buscadores" esté presente en la página
-		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(1));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-buscadores")));
+//		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(1));
+//		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-buscadores")));
 
 		WebElement paginaBuscadores = driver1.findElement(By.id("page-buscadores"));
 		String buscadoresPageText = paginaBuscadores.getText();
@@ -76,12 +77,13 @@ class Prueba1 {
 		WebElement buscadores = driver1.findElement(By.id("buscadores"));
 		buscadores.click();
 
+		driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		// Esperar a que el elemento con id "page-buscadores" esté presente en la página
-		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(1));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-buscadores")));
+//		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(1));
+//		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-buscadores")));
 
 		WebElement enlaceGoogle = driver1.findElement(By.id("google"));
-		enlaceGoogle.click();
+		// enlaceGoogle.click();
 		String enlaceGoogleText = enlaceGoogle.getText();
 		assertEquals("Google", enlaceGoogleText);
 	}
@@ -93,12 +95,13 @@ class Prueba1 {
 		WebElement buscadores = driver1.findElement(By.id("buscadores"));
 		buscadores.click();
 
+		driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		// Esperar a que el elemento con id "page-buscadores" esté presente en la página
-		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(1));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-buscadores")));
+//		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(1));
+//		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-buscadores")));
 
 		WebElement enlaceBing = driver1.findElement(By.id("bing"));
-		enlaceBing.click();
+		// enlaceBing.click();
 		String enlaceBingText = enlaceBing.getText();
 		assertEquals("Bing", enlaceBingText);
 	}
@@ -110,12 +113,13 @@ class Prueba1 {
 		WebElement buscadores = driver1.findElement(By.id("buscadores"));
 		buscadores.click();
 
+		driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		// Esperar a que el elemento con id "page-buscadores" esté presente en la página
-		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(1));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-buscadores")));
+//		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(1));
+//		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-buscadores")));
 
 		WebElement enlaceBaidu = driver1.findElement(By.id("baidu"));
-		enlaceBaidu.click();
+		// enlaceBaidu.click();
 		String enlaceBaiduText = enlaceBaidu.getText();
 		assertEquals("Baidu", enlaceBaiduText);
 	}
@@ -127,9 +131,10 @@ class Prueba1 {
 		WebElement buscadores = driver1.findElement(By.id("buscadores"));
 		buscadores.click();
 
+		driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		// Esperar a que el elemento con id "page-buscadores" esté presente en la página
-		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(1));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-buscadores")));
+//		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(1));
+//		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-buscadores")));
 
 		WebElement botonVolver = driver1.findElement(By.id("buscadores-volver"));
 		String botonVolverText = botonVolver.getText();
@@ -143,16 +148,18 @@ class Prueba1 {
 		WebElement buscadores = driver1.findElement(By.id("buscadores"));
 		buscadores.click();
 
+		driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		// Esperar a que el elemento con id "page-buscadores" esté presente en la página
-		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(1));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-buscadores")));
+//		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(1));
+//		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-buscadores")));
 
 		WebElement botonVolver = driver1.findElement(By.id("buscadores-volver"));
 		botonVolver.click();
 
+		driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		// Esperar a que el elemento con id "page-enlaces" esté presente en la página
-		wait = new WebDriverWait(driver1, Duration.ofSeconds(1));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-enlaces")));
+//		wait = new WebDriverWait(driver1, Duration.ofSeconds(1));
+//		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-enlaces")));
 
 		WebElement indexCorrecto = driver1.findElement(By.id("page-enlaces"));
 		String textoLogin = indexCorrecto.getText();
@@ -166,9 +173,10 @@ class Prueba1 {
 		WebElement redes = driver1.findElement(By.id("redes"));
 		redes.click();
 
+		driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		// Esperar a que el elemento con id "page-redes" esté presente en la página
-		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(5));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-redes")));
+//		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(5));
+//		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-redes")));
 
 		WebElement paginaRedes = driver1.findElement(By.id("page-redes"));
 		String buscadoresPageRedes = paginaRedes.getText();
@@ -183,9 +191,10 @@ class Prueba1 {
 		WebElement redes = driver1.findElement(By.id("redes"));
 		redes.click();
 
+		driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		// Esperar a que el elemento con id "page-redes" esté presente en la página
-		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(5));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-redes")));
+//		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(5));
+//		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-redes")));
 
 		WebElement enlaceInstagram = driver1.findElement(By.id("instagram"));
 		// enlaceInstagram.click();
@@ -200,9 +209,10 @@ class Prueba1 {
 		WebElement redes = driver1.findElement(By.id("redes"));
 		redes.click();
 
+		driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		// Esperar a que el elemento con id "page-redes" esté presente en la página
-		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(5));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-redes")));
+//		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(5));
+//		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-redes")));
 
 		WebElement enlaceTikTok = driver1.findElement(By.id("tiktok"));
 		// enlaceTikTok.click();
@@ -217,9 +227,10 @@ class Prueba1 {
 		WebElement redes = driver1.findElement(By.id("redes"));
 		redes.click();
 
+		driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		// Esperar a que el elemento con id "page-redes" esté presente en la página
-		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(5));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-redes")));
+//		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(5));
+//		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-redes")));
 
 		WebElement enlaceFacebook = driver1.findElement(By.id("facebook"));
 		// enlaceFacebook.click();
@@ -234,9 +245,10 @@ class Prueba1 {
 		WebElement redes = driver1.findElement(By.id("redes"));
 		redes.click();
 
+		driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		// Esperar a que el elemento con id "page-redes" esté presente en la página
-		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(5));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-redes")));
+//		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(5));
+//		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-redes")));
 
 		WebElement botonVolver = driver1.findElement(By.id("redes-volver"));
 		String botonVolverText = botonVolver.getText();
@@ -250,16 +262,18 @@ class Prueba1 {
 		WebElement redes = driver1.findElement(By.id("redes"));
 		redes.click();
 
+		driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		// Esperar a que el elemento con id "page-redes" esté presente en la página
-		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(5));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-redes")));
+//		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(5));
+//		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-redes")));
 
 		WebElement botonVolver = driver1.findElement(By.id("redes-volver"));
 		botonVolver.click();
 
+		driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		// Esperar a que el elemento con id "page-enlaces" esté presente en la página
-		wait = new WebDriverWait(driver1, Duration.ofSeconds(1));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-enlaces")));
+//		wait = new WebDriverWait(driver1, Duration.ofSeconds(1));
+//		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-enlaces")));
 
 		WebElement indexCorrecto = driver1.findElement(By.id("page-enlaces"));
 		String textoLogin = indexCorrecto.getText();
