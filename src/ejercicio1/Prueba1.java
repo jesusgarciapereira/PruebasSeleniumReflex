@@ -1,6 +1,7 @@
 package ejercicio1;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Duration;
 
@@ -10,21 +11,19 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 class Prueba1 {
 
-	static WebDriver driver1;
+	static WebDriver driver1 = new ChromeDriver();;
 
 	@BeforeAll
 	static void setURL() {
-		driver1 = new ChromeDriver();
+		driver1.get("http://localhost:3000/");
 	}
 
 	@Test
 	void testTituloEnlaces() {
-		driver1.get("http://localhost:3000/");
+		setURL();
 
 		WebElement indexCorrecto = driver1.findElement(By.id("page-enlaces"));
 		String textoLogin = indexCorrecto.getText();
@@ -34,8 +33,8 @@ class Prueba1 {
 
 	@Test
 	void testTextoBuscadores() {
-		driver1.get("http://localhost:3000/");
-
+		setURL();
+		
 		WebElement paginaBuscadores = driver1.findElement(By.id("buscadores"));
 		String buscadoresPageText = paginaBuscadores.getText();
 		assertEquals("Buscadores", buscadoresPageText);
@@ -43,8 +42,8 @@ class Prueba1 {
 
 	@Test
 	void testTextoRedes() {
-		driver1.get("http://localhost:3000/");
-
+		setURL();
+		
 		WebElement paginaRedes = driver1.findElement(By.id("redes"));
 		String buscadoresPageRedes = paginaRedes.getText();
 		assertEquals("Redes Sociales", buscadoresPageRedes);
@@ -53,8 +52,8 @@ class Prueba1 {
 
 	@Test
 	void testNavegarBuscadoresTitulo() {
-		driver1.get("http://localhost:3000/");
-
+		setURL();
+		
 		WebElement buscadores = driver1.findElement(By.id("buscadores"));
 		buscadores.click();
 
@@ -72,8 +71,8 @@ class Prueba1 {
 	@Test
 	void testNavegarBuscadoresGoogle() {
 
-		driver1.get("http://localhost:3000/");
-
+		setURL();
+		
 		WebElement buscadores = driver1.findElement(By.id("buscadores"));
 		buscadores.click();
 
@@ -83,15 +82,57 @@ class Prueba1 {
 //		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-buscadores")));
 
 		WebElement enlaceGoogle = driver1.findElement(By.id("google"));
-		// enlaceGoogle.click();
+	    
 		String enlaceGoogleText = enlaceGoogle.getText();
 		assertEquals("Google", enlaceGoogleText);
+	}
+	
+	@Test
+	void testEstoyGoogle() {
+
+		setURL();
+		
+		WebElement buscadores = driver1.findElement(By.id("buscadores"));
+		buscadores.click();
+
+		driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+		// Esperar a que el elemento con id "page-buscadores" esté presente en la página
+//		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(1));
+//		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-buscadores")));
+
+		WebElement enlaceGoogle = driver1.findElement(By.id("google"));
+		enlaceGoogle.click();
+		
+
+		// Guardamos el ID de la pestaña original
+	    String originalWindow = driver1.getWindowHandle();
+
+	    // Esperamos hasta que haya más de una pestaña abierta
+	    driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+	    
+	 // Cambiamos el foco a la nueva pestaña
+	    for (String windowHandle : driver1.getWindowHandles()) {
+	        if (!windowHandle.equals(originalWindow)) {
+	            driver1.switchTo().window(windowHandle);
+	            break;
+	        }
+	    }
+	    
+		String nuevaPestannia = driver1.getCurrentUrl();
+		assertTrue(nuevaPestannia.contains("google"));
+		
+		 // Cerrar la nueva pestaña
+	    driver1.close();
+
+	    // Volver a la pestaña original
+	    driver1.switchTo().window(originalWindow);
+	    
 	}
 
 	@Test
 	void testNavegarBuscadoresBing() {
-		driver1.get("http://localhost:3000/");
-
+		setURL();
+		
 		WebElement buscadores = driver1.findElement(By.id("buscadores"));
 		buscadores.click();
 
@@ -101,15 +142,54 @@ class Prueba1 {
 //		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-buscadores")));
 
 		WebElement enlaceBing = driver1.findElement(By.id("bing"));
-		// enlaceBing.click();
+		
 		String enlaceBingText = enlaceBing.getText();
 		assertEquals("Bing", enlaceBingText);
+	}
+	
+	@Test
+	void testEstoyBing() {
+		setURL();
+		
+		WebElement buscadores = driver1.findElement(By.id("buscadores"));
+		buscadores.click();
+
+		driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+		// Esperar a que el elemento con id "page-buscadores" esté presente en la página
+//		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(1));
+//		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-buscadores")));
+
+		WebElement enlaceBing = driver1.findElement(By.id("bing"));
+		enlaceBing.click();
+		// Guardamos el ID de la pestaña original
+	    String originalWindow = driver1.getWindowHandle();
+
+	    // Esperamos hasta que haya más de una pestaña abierta
+	    driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+	    
+	 // Cambiamos el foco a la nueva pestaña
+	    for (String windowHandle : driver1.getWindowHandles()) {
+	        if (!windowHandle.equals(originalWindow)) {
+	            driver1.switchTo().window(windowHandle);
+	            break;
+	        }
+	    }
+	    
+		String nuevaPestannia = driver1.getCurrentUrl();
+		assertTrue(nuevaPestannia.contains("bing"));
+		
+		 // Cerrar la nueva pestaña
+	    driver1.close();
+
+	    // Volver a la pestaña original
+	    driver1.switchTo().window(originalWindow);
+
 	}
 
 	@Test
 	void testNavegarBuscadoresBaidu() {
-		driver1.get("http://localhost:3000/");
-
+		setURL();
+		
 		WebElement buscadores = driver1.findElement(By.id("buscadores"));
 		buscadores.click();
 
@@ -119,15 +199,54 @@ class Prueba1 {
 //		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-buscadores")));
 
 		WebElement enlaceBaidu = driver1.findElement(By.id("baidu"));
-		// enlaceBaidu.click();
+		
 		String enlaceBaiduText = enlaceBaidu.getText();
 		assertEquals("Baidu", enlaceBaiduText);
+	}
+	
+	@Test
+	void testEstoyBaidu() {
+		setURL();
+		
+		WebElement buscadores = driver1.findElement(By.id("buscadores"));
+		buscadores.click();
+
+		driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+		// Esperar a que el elemento con id "page-buscadores" esté presente en la página
+//		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(1));
+//		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-buscadores")));
+
+		WebElement enlaceBaidu = driver1.findElement(By.id("baidu"));
+		enlaceBaidu.click();
+		// Guardamos el ID de la pestaña original
+	    String originalWindow = driver1.getWindowHandle();
+
+	    // Esperamos hasta que haya más de una pestaña abierta
+	    driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+
+	 // Cambiamos el foco a la nueva pestaña
+	    for (String windowHandle : driver1.getWindowHandles()) {
+	        if (!windowHandle.equals(originalWindow)) {
+	            driver1.switchTo().window(windowHandle);
+	            break;
+	        }
+	    }
+	    
+		String nuevaPestannia = driver1.getCurrentUrl();
+		assertTrue(nuevaPestannia.contains("baidu"));
+		
+		 // Cerrar la nueva pestaña
+	    driver1.close();
+	    
+	    // Volver a la pestaña original
+	    driver1.switchTo().window(originalWindow);
+
 	}
 
 	@Test
 	void testNavegarBuscadoresTextoVolver() {
-		driver1.get("http://localhost:3000/");
-
+		setURL();
+		
 		WebElement buscadores = driver1.findElement(By.id("buscadores"));
 		buscadores.click();
 
@@ -143,8 +262,8 @@ class Prueba1 {
 
 	@Test
 	void testNavegarBuscadoresNavegarVolver() {
-		driver1.get("http://localhost:3000/");
-
+		setURL();
+		
 		WebElement buscadores = driver1.findElement(By.id("buscadores"));
 		buscadores.click();
 
@@ -168,8 +287,8 @@ class Prueba1 {
 
 	@Test
 	void testNavegarRedesTitulo() {
-		driver1.get("http://localhost:3000/");
-
+		setURL();
+		
 		WebElement redes = driver1.findElement(By.id("redes"));
 		redes.click();
 
@@ -186,8 +305,8 @@ class Prueba1 {
 
 	@Test
 	void testNavegarRedesInstagram() {
-		driver1.get("http://localhost:3000/");
-
+		setURL();
+		
 		WebElement redes = driver1.findElement(By.id("redes"));
 		redes.click();
 
@@ -197,15 +316,54 @@ class Prueba1 {
 //		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-redes")));
 
 		WebElement enlaceInstagram = driver1.findElement(By.id("instagram"));
-		// enlaceInstagram.click();
+		
 		String enlaceInstagramText = enlaceInstagram.getText();
 		assertEquals("Instagram", enlaceInstagramText);
 	}
 
 	@Test
-	void testNavegarRedesTiktok() {
-		driver1.get("http://localhost:3000/");
+	void testEstoyInstagram() {
+		setURL();
+		
+		WebElement redes = driver1.findElement(By.id("redes"));
+		redes.click();
 
+		driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+		// Esperar a que el elemento con id "page-redes" esté presente en la página
+//		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(5));
+//		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-redes")));
+
+		WebElement enlaceInstagram = driver1.findElement(By.id("instagram"));
+		enlaceInstagram.click();
+		// Guardamos el ID de la pestaña original
+	    String originalWindow = driver1.getWindowHandle();
+
+	    // Esperamos hasta que haya más de una pestaña abierta
+	    driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+	    
+	 // Cambiamos el foco a la nueva pestaña
+	    for (String windowHandle : driver1.getWindowHandles()) {
+	        if (!windowHandle.equals(originalWindow)) {
+	            driver1.switchTo().window(windowHandle);
+	            break;
+	        }
+	    }
+	    
+		String nuevaPestannia = driver1.getCurrentUrl();
+		assertTrue(nuevaPestannia.contains("instagram"));
+		
+		 // Cerrar la nueva pestaña
+	    driver1.close();
+
+	    // Volver a la pestaña original
+	    driver1.switchTo().window(originalWindow);
+
+	}
+	
+	@Test
+	void testNavegarRedesTiktok() {
+		setURL();
+		
 		WebElement redes = driver1.findElement(By.id("redes"));
 		redes.click();
 
@@ -215,14 +373,53 @@ class Prueba1 {
 //		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-redes")));
 
 		WebElement enlaceTikTok = driver1.findElement(By.id("tiktok"));
-		// enlaceTikTok.click();
+		
 		String enlaceTikTokText = enlaceTikTok.getText();
 		assertEquals("TikTok", enlaceTikTokText);
+	}
+	
+	@Test
+	void testEstoyTiktok() {
+		setURL();
+		
+		WebElement redes = driver1.findElement(By.id("redes"));
+		redes.click();
+
+		driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+		// Esperar a que el elemento con id "page-redes" esté presente en la página
+//		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(5));
+//		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-redes")));
+
+		WebElement enlaceTikTok = driver1.findElement(By.id("tiktok"));
+		enlaceTikTok.click();
+		// Guardamos el ID de la pestaña original
+	    String originalWindow = driver1.getWindowHandle();
+
+	    // Esperamos hasta que haya más de una pestaña abierta
+	    driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+	    
+	 // Cambiamos el foco a la nueva pestaña
+	    for (String windowHandle : driver1.getWindowHandles()) {
+	        if (!windowHandle.equals(originalWindow)) {
+	            driver1.switchTo().window(windowHandle);
+	            break;
+	        }
+	    }
+	    
+		String nuevaPestannia = driver1.getCurrentUrl();
+		assertTrue(nuevaPestannia.contains("tiktok"));
+		
+		 // Cerrar la nueva pestaña
+	    driver1.close();
+
+	    // Volver a la pestaña original
+	    driver1.switchTo().window(originalWindow);
+
 	}
 
 	@Test
 	void testNavegarRedesFacebook() {
-		driver1.get("http://localhost:3000/");
+		setURL();
 
 		WebElement redes = driver1.findElement(By.id("redes"));
 		redes.click();
@@ -233,14 +430,53 @@ class Prueba1 {
 //		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-redes")));
 
 		WebElement enlaceFacebook = driver1.findElement(By.id("facebook"));
-		// enlaceFacebook.click();
+		
 		String enlaceFacebookText = enlaceFacebook.getText();
 		assertEquals("Facebook", enlaceFacebookText);
+	}
+	
+	@Test
+	void testEstoyFacebook() {
+		setURL();
+
+		WebElement redes = driver1.findElement(By.id("redes"));
+		redes.click();
+
+		driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+		// Esperar a que el elemento con id "page-redes" esté presente en la página
+//		WebDriverWait wait = new WebDriverWait(driver1, Duration.ofSeconds(5));
+//		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("page-redes")));
+
+		WebElement enlaceFacebook = driver1.findElement(By.id("facebook"));
+		enlaceFacebook.click();
+		// Guardamos el ID de la pestaña original
+	    String originalWindow = driver1.getWindowHandle();
+
+	    // Esperamos hasta que haya más de una pestaña abierta
+	    driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+	    
+	 // Cambiamos el foco a la nueva pestaña
+	    for (String windowHandle : driver1.getWindowHandles()) {
+	        if (!windowHandle.equals(originalWindow)) {
+	            driver1.switchTo().window(windowHandle);
+	            break;
+	        }
+	    }
+	    
+		String nuevaPestannia = driver1.getCurrentUrl();
+		assertTrue(nuevaPestannia.contains("facebook"));
+		
+		 // Cerrar la nueva pestaña
+	    driver1.close();
+
+	    // Volver a la pestaña original
+	    driver1.switchTo().window(originalWindow);
+
 	}
 
 	@Test
 	void testNavegarRedesTextoVolver() {
-		driver1.get("http://localhost:3000/");
+		setURL();
 
 		WebElement redes = driver1.findElement(By.id("redes"));
 		redes.click();
@@ -257,7 +493,7 @@ class Prueba1 {
 
 	@Test
 	void testNavegarRedesNavegarVolver() {
-		driver1.get("http://localhost:3000/");
+		setURL();
 
 		WebElement redes = driver1.findElement(By.id("redes"));
 		redes.click();
