@@ -1,10 +1,12 @@
 package ejercicio1;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 class Prueba2 {
@@ -16,53 +18,42 @@ class Prueba2 {
 		driver1.get("http://localhost:3000/");
 	}
 	
-//	static WebDriver driver1;
+    @Test
+    void testCabecera() {
+        WebElement paginaFormulario = driver1.findElement(By.id("page-formulario"));
+        String textoCabecera = paginaFormulario.getText();
+        assertEquals("Formulario de registro - Mi web", textoCabecera);
+    }
+    
 
+    @Test
+    void testNombre() {
+        WebElement nombre = driver1.findElement(By.id("nombre"));
+        String nombreTexto = nombre.getText();
+        assertEquals("Nombre:", nombreTexto);
+    }
 
-//    @BeforeAll
-//    static void setURL() {
-//        driver1 = new ChromeDriver();
-//        driver1.get("http://localhost:3000/");
-//
-//    }
-//
-//    //Test para comprobar que existe el titulo "Formulario de registro"
-//    @Test
-//    void comprobarTitulo() {
-//        WebElement elemento = driver1.findElement(By.id("titulo-form"));
-//        String tituloTexto = elemento.getText();
-//        assertEquals("Formulario de registro", tituloTexto);
-//    }
-//    
-//    //Test para comprbar que existe el texto nombre
-//    @Test
-//    void comprobarTextoNombre() {
-//        WebElement elemento = driver1.findElement(By.id("nombre"));
-//        String nombreTexto = elemento.getText();
-//        assertEquals("Nombre:", nombreTexto);
-//    }
-//    //Test para comprobar que existe el input de nombre
-//    @Test
-//    void comprobarInputNombre() {
-//        WebElement elemento = driver1.findElement(By.id("nombre-input"));
-//        String inputNombre = elemento.getText();
-//        assertEquals("", inputNombre);
-//    }
-//    //Test para comprobar que existe el texto apellido
-//    @Test
-//    void comprobarTextoApellido() {
-//        WebElement elemento = driver1.findElement(By.id("apellido"));
-//        String apellidoTexto = elemento.getText();
-//        assertEquals("Apellido:", apellidoTexto);
-//    }
-//    
-//    //Test para comprobar que existe el input de apellido
-//    @Test
-//    void comprobarInputApellido() {
-//        WebElement elemento = driver1.findElement(By.id("apellido-input"));
-//        String inputApellido = elemento.getText();
-//        assertEquals("", inputApellido);
-//    }
+    @Test
+    void testInputNombre() {
+        WebElement nombreImput = driver1.findElement(By.id("nombre-input"));
+        String nombreImputTexto = nombreImput.getText();
+        assertEquals("", nombreImputTexto);
+    }
+
+    @Test
+    void testApellidos() {
+        WebElement apellidos = driver1.findElement(By.id("apellidos"));
+        String apellidosTexto = apellidos.getText();
+        assertEquals("Apellidos:", apellidosTexto);
+    }
+    
+    @Test
+    void testInputApellidos() {
+        WebElement apellidosInput = driver1.findElement(By.id("apellidos-input"));
+        String apellidosInputTexto = apellidosInput.getText();
+        assertEquals("", apellidosInputTexto);
+    }
+    
 //    
 //    //Test para comprobar que existe el texto de sexo
 //    @Test
@@ -104,57 +95,47 @@ class Prueba2 {
 //        String presionado = elemento.getAttribute("aria-checked");
 //        assertEquals("true", presionado);
 //    }
-//  //Test para comprobar que existe el texto correo
-//    @Test
-//    void comprobarTextoCorreo() {
-//        WebElement elemento = driver1.findElement(By.id("correo"));
-//        String correoTexto = elemento.getText();
-//        assertEquals("Correo:", correoTexto);
-//    }
-//    
-//    //Test para comprobar que existe el input de correo
-//    @Test
-//    void comprobarInputCorreo() {
-//        WebElement elemento = driver1.findElement(By.id("correo-input"));
-//        String inputCorreo = elemento.getText();
-//        assertEquals("", inputCorreo);
-//    }
-//    
-//    //Test para comprobar que existe el informacion en el check
-//    @Test
-//    void comprobarTextoCasillaInformacion() {
-//        WebElement elemento = driver1.findElement(By.id("info"));
-//        String textoCheck = elemento.getAttribute("value");
-//        String info = "Deseo recibir información sobre novedades y ofertas";
-//        assertEquals(info, textoCheck);
-//    }
-//    
-//    //Test para comprobar que el check de la info esta presionado por defecto
-//    @Test
-//    void comprobarCasillaInformacionPresionado() {
-//    	WebElement elemento = driver1.findElement(By.id("info"));
-//    	String presionado = elemento.getAttribute("aria-checked");
-//    	assertEquals("true", presionado);
-//    }
-//    
-//    //Test para comprobar en el check el texto de la normativa
-//    @Test
-//    void comprobarTextoCasillaNormativa() {
-//    	WebElement elemento = driver1.findElement(By.id("normativa"));
-//    	String textoCheck = elemento.getAttribute("value");
-//    	String normativa = "Declaro haber leido y aceptar las condiciones generales del programa y la normativa sobre protección de datos";
-//    	assertEquals(normativa, textoCheck);
-//    }
-//    
-//  //Test para comprobar que el check de la info esta presionado por defecto
-//    @Test
-//    void comprobarCasillaNormativaPresionado() {
-//    	WebElement elemento = driver1.findElement(By.id("normativa"));
-//    	elemento.click();
-//    	String presionado = elemento.getAttribute("aria-checked");
-//    	assertEquals("true", presionado);
-//    }
-//    
+    
+
+    @Test
+    void testCorreo() {
+        WebElement correo = driver1.findElement(By.id("correo"));
+        String correoTexto = correo.getText();
+        assertEquals("Correo:", correoTexto);
+    }
+    
+
+    void testInputCorreo() {
+        WebElement correoInput = driver1.findElement(By.id("correo-input"));
+        String correoInputTexto = correoInput.getText();
+        assertEquals("", correoInputTexto);
+    }
+    
+    //Test para comprobar que existe el informacion en el check
+    @Test
+    void testTextoCasillaVerificcion1() {
+        WebElement informacion = driver1.findElement(By.id("informacion-checkbox"));
+        String informacionTexto = informacion.getAttribute("value");
+        assertEquals("Deseo recibir información sobre novedades y ofertas", informacionTexto);
+    }
+    
+    //Test para comprobar que el check de la info esta presionado por defecto
+    @Test
+    void testTextoCasillaVerificcion1Pulsado() {
+    	WebElement casilla = driver1.findElement(By.id("informacion-checkbox"));
+    	String casillaPrecionada = casilla.getAttribute("aria-checked");
+    	assertEquals("true", casillaPrecionada);
+    }
+    
+    //Test para comprobar en el check el texto de la normativa
+    @Test
+    void testTextoCasillaVerificcion2() {
+    	WebElement normativa = driver1.findElement(By.id("normativa-checkbox"));
+        String normativaTexto = normativa.getAttribute("value");
+        assertEquals("Declaro haber leido y aceptar las condiciones generales del programa y la normativa sobre protección de datos", normativaTexto);
+    }
+    
+    
 //    //Test para comprobar el texto del boton
 //    @Test
 //    void comprobarBoton() {
